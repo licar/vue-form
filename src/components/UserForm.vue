@@ -1,29 +1,34 @@
 <template>
   <div class="container">
-    <h2>Stacked form</h2>
     <form>
       <div class="form-group">
-        <label for="name">Name</label>
-        <input class="form-control" v-model="name" id="name" type="text">
+        <label>Имя:</label>
+        <input id="name" class="form-control" v-model="name"  type="text">
       </div>
       <div class="form-group">
-        <select class="form-control" v-model="employment_type">
+        <label>Вид занятости:</label>
+        <select id="employment_type" class="form-control" v-model="employment_type">
           <option v-for="option in options" v-bind:value="option.id">
             {{ option.text }}
           </option>
         </select>
       </div>
       <div class="form-group">
+          <label>Пол:</label>
           <label class="radio-inline"><input type="radio" v-bind:value="0" v-model="sex">М</label>
           <label class="radio-inline"><input type="radio" v-bind:value="1" v-model="sex">Ж</label>
       </div>
       <div class="form-group">
+        <label>Хобби: </label>
         <textarea class="form-control" v-model="hobbies">
         </textarea>
       </div>
       <div class="form-group form-check">
-        <input class="form-check-input" type="checkbox" v-model="married">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" v-model="married"> Remember me
+        </label>
       </div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
   </div>
 </template>
