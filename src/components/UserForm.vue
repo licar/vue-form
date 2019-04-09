@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'UserForm',
   data() {
@@ -52,22 +54,32 @@ export default {
     }
   },
   methods: {
-    checkForm: function (e) {
+    async checkForm(e) {
       this.errors = [];
 
       if (this.name.length <= 0) {
         this.errors.push('Требуется указать имя.');
       }
 
-      if (this.name.hobbies <= 0) {
+      if (this.hobbies.length <= 0) {
         this.errors.push('Поле хобби должно быть заполненно');
       }
 
       if (!this.errors){
+        await sendForm()
         return true;
       }
 
       e.preventDefault();
+    },
+    
+    async sendForm () {
+      alert("any")
+      try{
+        const { result } = await axios.post(process.env.VUE_APP_SERVER_URL)
+      }catch(err){
+        console.log(err);
+      }
     }
   }
 }
