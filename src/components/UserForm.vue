@@ -1,33 +1,43 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <input v-model="name" type="text">
-    <select v-model="employment_type">
-      <option v-for="option in options" v-bind:value="option.id">
-        {{ option.text }}
-      </option>
-    </select>
-    <div>
-      <input type="radio" v-bind:value="0" v-model="sex">М
-      <input type="radio" v-bind:value="1" v-model="sex">Ж
-    </div>
-    <textarea v-model="hobbies">
-    </textarea>
-</div>
+  <div class="container">
+    <h2>Stacked form</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" v-model="name" id="name" type="text">
+      </div>
+      <div class="form-group">
+        <select class="form-control" v-model="employment_type">
+          <option v-for="option in options" v-bind:value="option.id">
+            {{ option.text }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label class="radio-inline"><input type="radio" v-bind:value="0" v-model="sex">М</label>
+          <label class="radio-inline"><input type="radio" v-bind:value="1" v-model="sex">Ж</label>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" v-model="hobbies">
+        </textarea>
+      </div>
+      <div class="form-group form-check">
+        <input class="form-check-input" type="checkbox" v-model="married">
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'UserForm',
   data() {
     return {
       name: '',
       employment_type: 0,
       sex: 0,
       hobbies: '',
+      married: false,
       options:[
         {text : 'Учусь', id : 0},
         {text : 'Работаю', id : 1},
@@ -37,7 +47,6 @@ export default {
   }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
