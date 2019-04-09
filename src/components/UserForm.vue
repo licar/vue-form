@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form>
+    <form @submit="checkForm">
       <div class="form-group">
         <label>Имя:</label>
         <input id="name" class="form-control" v-model="name"  type="text">
@@ -43,11 +43,31 @@ export default {
       sex: 0,
       hobbies: '',
       married: false,
+      errors: [],
       options:[
         {text : 'Учусь', id : 0},
         {text : 'Работаю', id : 1},
         {text : 'Пенсионер', id : 2}
       ]
+    }
+  },
+  methods: {
+    checkForm: function (e) {
+      this.errors = [];
+
+      if (this.name.length <= 0) {
+        this.errors.push('Требуется указать имя.');
+      }
+
+      if (this.name.hobbies <= 0) {
+        this.errors.push('Поле хобби должно быть заполненно');
+      }
+
+      if (!this.errors){
+        return true;
+      }
+
+      e.preventDefault();
     }
   }
 }
