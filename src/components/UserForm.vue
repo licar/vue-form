@@ -6,7 +6,7 @@
         <input id="name" class="form-control" v-model="user.name"  type="text">
       </div>
       <div class="form-group">
-        <label>Вид занятости:</label>
+        <label>Род деятельности:</label>
         <select id="employment_type" class="form-control" v-model="user.employment_type">
           <option v-for="option in options" v-bind:value="option.id">
             {{ option.text }}
